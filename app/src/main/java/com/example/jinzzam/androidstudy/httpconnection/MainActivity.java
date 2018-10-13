@@ -19,7 +19,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 public class MainActivity extends AppCompatActivity {
-    private String strUrl = "http://192.168.0.3:3000/api/user/namolppam@pocket.mon";
+    private String strUrl = "http://192.168.43.36:3000/api/user/namolppam@pocket.mon";
     private String strMethod = "get";
     private BufferedReader in = null;
 
@@ -66,6 +66,8 @@ public class MainActivity extends AppCompatActivity {
 
             textView.setText(s);
         }
+
+
     }
 
 

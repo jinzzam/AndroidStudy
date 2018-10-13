@@ -61,7 +61,7 @@ public class RequestHttpConnection {
             // [2-1]. urlConn 설정.
             urlConn.setRequestMethod("POST"); // URL 요청에 대한 메소드 설정 : POST.
             urlConn.setRequestProperty("Accept-Charset", "UTF-8"); // Accept-Charset 설정.
-            urlConn.setRequestProperty("Context-Type", "application/json");
+            urlConn.setRequestProperty("Context-Type", "UTF-8");
 
             // [2-2]. parameter 전달 및 데이터 읽어오기.
             String strParams = sbParams.toString(); //sbParams에 정리한 파라미터들을 스트링으로 저장. 예)id=id1&pw=123;
@@ -72,8 +72,10 @@ public class RequestHttpConnection {
 
             // [2-3]. 연결 요청 확인.
             // 실패 시 null을 리턴하고 메서드를 종료.
-            if (urlConn.getResponseCode() != HttpURLConnection.HTTP_OK)
+            if (urlConn.getResponseCode() != HttpURLConnection.HTTP_OK) {
+                Log.e("TAG", "request: " + urlConn.getResponseCode());
                 return null;
+            }
 
             // [2-4]. 읽어온 결과물 리턴.
             // 요청한 URL의 출력물을 BufferedReader로 받는다.
@@ -88,7 +90,7 @@ public class RequestHttpConnection {
                 page += line;
             }
 
-            Log.e("TAG", "request: " + page.toString());
+            Log.e("TAG", "request: hihihihihihi");
             return page;
 
         } catch (MalformedURLException e) { // for URL.
