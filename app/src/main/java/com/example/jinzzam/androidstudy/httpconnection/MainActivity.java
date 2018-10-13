@@ -30,9 +30,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.act_http_test_main);
         initView();
-        NetworkTask networkTask = new NetworkTask(strUrl, null);
-        networkTask.execute();
-//        httpConnect();
+//        NetworkTask networkTask = new NetworkTask(strUrl, null);
+//        networkTask.execute();
+        httpConnect();
     }
 
 
@@ -74,21 +74,15 @@ public class MainActivity extends AppCompatActivity {
     public void httpConnect() {
         try {
             URL url = new URL(strUrl);
-            Log.e("TAG", "httpConnect: " + strUrl);
             HttpURLConnection con = (HttpURLConnection) url.openConnection();
-            Log.e("TAG", "httpConnect: one");
             con.setRequestMethod(strMethod.toUpperCase());
-//            con.setRequestProperty("Content-Type", "application/json");
-            con.setConnectTimeout(10000);
-            con.setReadTimeout(5000);
+
             in = new BufferedReader(new InputStreamReader(con.getInputStream(), "UTF-8"));
-            Log.e("TAG", "httpConnect: three");
+
             JsonParser jsonParser = new JsonParser();
             JsonObject jsonObject = (JsonObject) jsonParser.parse(in);
             System.out.println(jsonObject);
-            Log.e("TAG", "httpConnect: four");
-            textView.setText(jsonObject.toString());
-
+            Log.e("TAG", "httpConnect: " + jsonObject.toString());
         } catch (MalformedURLException e) {
             e.printStackTrace();
         } catch (IOException e) {
@@ -103,5 +97,4 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     }
-
 }
