@@ -9,6 +9,8 @@ import android.widget.TextView;
 
 import com.example.jinzzam.androidstudy.R;
 import com.google.gson.Gson;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 
 import java.io.IOException;
 
@@ -44,7 +46,7 @@ public class getUser extends AppCompatActivity {
         try {
             OkHttpClient client = new OkHttpClient();
 
-            String url = "http://192.168.0.3:3000/api/user/namolppam@pocket.mon";
+            String url = "http://192.168.0.3:3000/api/user/";
 
             Request request = new Request.Builder()
                     .addHeader("Authorization", "TEST AUTH")
@@ -54,9 +56,12 @@ public class getUser extends AppCompatActivity {
                     .execute();
 
             String result = response.body().string();
+            JsonParser jsonParser = new JsonParser();
+//            JsonObject jsonObject = (JsonObject) jsonParser.parse(result);
 
-            Gson gson = new Gson();
-            Log.e("TAG", "getUserInfo: " + gson.fromJson(result, this.getClass()));
+//            Gson gson = new Gson();
+            Log.e("TAG", "getUserInfo: " + result.toString());
+//            Log.e("TAG", "getUserInfo: " + jsonObject.toString());
 
             return true;
         } catch (IOException e) {
