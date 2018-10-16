@@ -1,6 +1,5 @@
 package com.example.jinzzam.androidstudy.httpconnection;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -8,18 +7,10 @@ import android.util.Log;
 import android.widget.TextView;
 
 import com.example.jinzzam.androidstudy.R;
-import com.google.gson.Gson;
 import com.google.gson.JsonArray;
-import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import java.io.IOException;
-
-import javax.security.auth.login.LoginException;
 
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -28,6 +19,7 @@ import okhttp3.Response;
 public class getUser extends AppCompatActivity {
     private TextView textView;
     private String userEmail;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
